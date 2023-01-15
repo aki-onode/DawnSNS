@@ -1,28 +1,39 @@
 @extends('layouts.logout')
 
 @section('content')
+    <h2>新規ユーザー登録</h2>
 
-{!! Form::open() !!}
+    <form action="post" action="{{ route('auth.register') }}" id="form-wrapper">
+        @csrf
 
-<h2>新規ユーザー登録</h2>
+        <div class="form-group">
+            <label>
+                <p>UserName</p>
+                <input type="text" id="username">
+            </label>
+        </div>
+        <div class="form-group">
+            <label>
+                <p>MailAdress</p>
+                <input type="email">
+            </label>
+        </div>
+        <div class="form-group">
+            <label>
+                <p>Password</p>
+                <input type="password">
+            </label>
+        </div>
+        <div class="form-group">
+            <label>
+                <p>Password confirm</p>
+                <input type="password">
+            </label>
+        </div>
+        <div class="form-button">
+            <input type="submit" value="REGISTER">
+        </div>
+    </form>
 
-{{ Form::label('ユーザー名') }}
-{{ Form::text('username',null,['class' => 'input']) }}
-
-{{ Form::label('メールアドレス') }}
-{{ Form::text('mail',null,['class' => 'input']) }}
-
-{{ Form::label('パスワード') }}
-{{ Form::text('password',null,['class' => 'input']) }}
-
-{{ Form::label('パスワード確認') }}
-{{ Form::text('password-confirm',null,['class' => 'input']) }}
-
-{{ Form::submit('登録') }}
-
-<p><a href="/login">ログイン画面へ戻る</a></p>
-
-{!! Form::close() !!}
-
-
+    <p><a href="/login">ログイン画面へ戻る</a></p>
 @endsection

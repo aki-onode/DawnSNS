@@ -48,11 +48,7 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-        return Validator::make($data, [
-            'username' => 'required|string|max:255',
-            'mail' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:4|confirmed',
-        ]);
+        return Validator::make($data, []);
     }
 
     /**
@@ -70,14 +66,16 @@ class RegisterController extends Controller
         ]);
     }
 
-
-    // public function registerForm(){
-    //     return view("auth.register");
-    // }
-
     public function register(Request $request)
     {
         if ($request->isMethod('post')) {
+
+            $request->validate([
+                'username' => 'required|string|max:255',
+                'mail' => 'required|string|email|max:255|unique:users',
+                'password' => 'required|string|min:4|confirmed',
+            ]);
+
             $data = $request->input();
 
             $this->create($data);

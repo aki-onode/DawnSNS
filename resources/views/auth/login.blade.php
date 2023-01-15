@@ -1,20 +1,27 @@
 @extends('layouts.logout')
 
 @section('content')
+    <p>Social Network Service</p>
+    <p>DAWNSNSへようこそ</p>
+    <form action="">
+        @csrf
 
-{!! Form::open() !!}
+        <div class="form-group">
+            <label>
+                <p>MailAdress</p>
+                <input type="email">
+            </label>
+        </div>
+        <div class="form-group">
+            <label>
+                <p>Password</p>
+                <input type="password">
+            </label>
+        </div>
+        <div class="form-button">
+            <input type="submit" value="LOGIN">
+        </div>
+    </form>
 
-<p>DAWNSNSへようこそ</p>
-
-{{ Form::label('e-mail') }}
-{{ Form::text('mail',null,['class' => 'input']) }}
-{{ Form::label('password') }}
-{{ Form::password('password',['class' => 'input']) }}
-
-{{ Form::submit('ログイン') }}
-
-<p><a href="/register">新規ユーザーの方はこちら</a></p>
-
-{!! Form::close() !!}
-
+    <p><a href="/register">新規ユーザーの方はこちら</a></p>
 @endsection
