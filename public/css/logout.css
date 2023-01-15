@@ -1,12 +1,33 @@
 @charset "utf-8";
 
+/* 共通パーツ */
 html{
     height: 100%;
-    color: #fff;
+    color: #fffefe;
+    font-family: "Meiryo", sans-serif;
 }
+
 body{
     height: 100%;
-    background: #3C4767;
+    background: linear-gradient(#3c4767 60%, #df563b);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+header {
+    display: flex;
+    justify-content: center;
+}
+
+p {
+    font-size: 14px;
+}
+
+a {
+    color: #fffefe;
+    font-size: 12px;
 }
 
 #container {
@@ -15,6 +36,122 @@ body{
     align-items: center;
 }
 
+/* フォーム共通 */
+input {
+    padding: 4px;
+    outline: none;
+    border: none;
+    border-radius: 6px;
+    box-sizing: border-box;
+}
+
+label > p {
+    margin-top: 14px;
+    margin-bottom: 5px;
+}
+
+label > input {
+    height: 28px;
+    width: 212px;
+}
+
+#logout-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #0000002b;
+    border-radius: 5px;
+}
+
+.form-wrapper {
+    padding-right: 33px;
+    padding-left: 35px;
+}
+
 .form-button {
+    padding-top: 16px;
     text-align: right;
+}
+
+.form-button > input {
+    height: 28px;
+    color: #fff;
+    background: #4b71cab3;
+}
+
+/* ログイン画面エリア */
+.title {
+    display: flex;
+    justify-content: center;
+}
+
+.title > p {
+    font-size: 28px;
+    margin-bottom: 66px;
+}
+
+.welcome-text {
+    padding-top: 34px;
+    padding-bottom: 16px;
+}
+
+.login-button {
+    padding: 4px 28px;
+}
+
+.create-users {
+    padding-top: 32px;
+    padding-bottom: 21px;
+}
+
+/* 登録画面エリア */
+.create-text {
+    padding-top: 22px;
+    padding-bottom: 45px;
+}
+
+.create-text > h2 {
+    font-size: 14px;
+}
+
+.create-button {
+    padding: 4px 20px;
+}
+
+.back-login {
+    padding-top: 58px;
+    padding-bottom: 20px;
+}
+
+/* 登録後画面エリア */
+.message-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 27px 20px 0 20px;
+}
+
+.message-wrapper > p {
+    margin-bottom: 4px;
+}
+
+.back-button {
+
+    padding-top: 33px;
+    padding-bottom: 40px;
+}
+
+.back-button > a {
+    display: inline-block;
+    font-size: 14px;
+    background: #4b71cab3;
+    padding: 4px 12px;
+    border-radius: 6px;
+}
+
+/* バリデーションエラー */
+.error {
+    color: red;
+    font-size: 12px;
+    margin-top: 8px;
 }

@@ -1,7 +1,7 @@
 @extends('layouts.logout')
 
 @section('content')
-    <div id="container">
+    <div id="logout-wrapper">
         <div class="message-wrapper">
             <p>{{ $username }}さん</p>
             <p>ようこそ！DAWNSNSへ</p>
