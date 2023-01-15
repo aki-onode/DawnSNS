@@ -25,9 +25,9 @@
     <header>
         <h1><img src="images/main_logo.png"></h1>
     </header>
-    <div id="container">
-        @yield('content')
-    </div>
+
+    @yield('content')
+
     <script src="JavaScriptファイルのURL"></script>
     <script src="JavaScriptファイルのURL"></script>
 </body>

@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Auth;
 
 use App\Models\User;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
 
@@ -41,28 +40,17 @@ class RegisterController extends Controller
     }
 
     /**
-     * Get a validator for an incoming registration request.
-     *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
-    protected function validator(array $data)
-    {
-        return Validator::make($data, []);
-    }
-
-    /**
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
-     * @return \App\User
+     * @return \App\Models\User
      */
-    protected function create(array $data)
+    protected function create(array $userData)
     {
         return User::create([
-            'username' => $data['username'],
-            'mail' => $data['mail'],
-            'password' => bcrypt($data['password']),
+            'username' => $userData['username'],
+            'mail' => $userData['mail'],
+            'password' => bcrypt($userData['password']),
         ]);
     }
 
@@ -71,21 +59,29 @@ class RegisterController extends Controller
         if ($request->isMethod('post')) {
 
             $request->validate([
-                'username' => 'required|string|max:255',
-                'mail' => 'required|string|email|max:255|unique:users',
-                'password' => 'required|string|min:4|confirmed',
+                'username' => 'required|string|between:4,12',
+                'mail' => 'required|string|email|min:4|unique:users',
+                'password' => 'required|alpha_num|between:4,12|confirmed',
+                'password_confirmation' => 'required',
+            ], [
+                'username.required' => 'ユーザー名を入力してください',
+                'mail.required' => 'メールアドレスを入力してください',
+                'password.required' => 'パスワードを入力してください',
+                'password_confirmation.required' => '確認用パスワードを入力してください',
             ]);
+            $userData = $request->all();
 
-            $data = $request->input();
+            session()->put($userData);
+            $this->create($userData);
 
-            $this->create($data);
-            return redirect('added');
+            return redirect()->route('show.added');
         }
         return view('auth.register');
     }
 
-    public function added()
+    public function added(Request $request)
     {
-        return view('auth.added');
+        $username = $request->session()->get('username');
+        return view('auth.added')->with(['username' => $username]);
     }
 }
