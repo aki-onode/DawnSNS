@@ -1,8 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\PostsController;
+use App\Http\Controllers\UsersController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -24,7 +27,7 @@ Route::post('/register', [RegisterController::class, 'register'])->name('users.r
 Route::get('/added', [RegisterController::class, 'added'])->name('show.added');
 
 //ログイン中のページ
-Route::get('/top', 'PostsController@index');
+Route::get('/top', [PostsController::class, 'index'])->name('user.home');
 
 Route::get('/profile', 'UsersController@profile');
 
@@ -32,3 +35,5 @@ Route::get('/search', 'UsersController@index');
 
 Route::get('/follow-list', 'PostsController@index');
 Route::get('/follower-list', 'PostsController@index');
+
+Route::get('/logout', [UsersController::class, 'logout'])->name('user.logout');

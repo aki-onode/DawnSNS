@@ -45,12 +45,12 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\Models\User
      */
-    protected function create(array $userData)
+    protected function create(array $data)
     {
         return User::create([
-            'username' => $userData['username'],
-            'mail' => $userData['mail'],
-            'password' => bcrypt($userData['password']),
+            'username' => $data['username'],
+            'mail' => $data['mail'],
+            'password' => bcrypt($data['password']),
         ]);
     }
 
@@ -69,10 +69,10 @@ class RegisterController extends Controller
                 'password.required' => 'パスワードを入力してください',
                 'password_confirmation.required' => '確認用パスワードを入力してください',
             ]);
-            $userData = $request->all();
+            $data = $request->all();
 
-            session()->put($userData);
-            $this->create($userData);
+            $request->session()->put($data);
+            $this->create($data);
 
             return redirect()->route('show.added');
         }

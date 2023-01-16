@@ -11,19 +11,19 @@
         </div>
 
         <div class="form-wrapper">
-            <form action="" class="">
+            <form method="POST" action="{{ route('users.login') }}">
                 @csrf
 
                 <div class="form-group">
                     <label>
                         <p>MailAdress</p>
-                        <input type="email">
+                        <input type="email" name="mail" value="{{ old('mail') }}">
                     </label>
                 </div>
                 <div class="form-group">
                     <label>
                         <p>Password</p>
-                        <input type="password">
+                        <input type="password" name="password" value="{{ old('password') }}">
                     </label>
                 </div>
                 <div class="form-button">

@@ -15,7 +15,9 @@
                         <input type="text" name="username" value="{{ old('username') }}">
                     </label>
                     @error('username')
-                        <div class="error">{{ $message }}</div>
+                        <div>
+                            <strong class="error">{{ $message }}</strong>
+                        </div>
                     @enderror
                 </div>
                 <div class="form-group">
@@ -24,7 +26,9 @@
                         <input type="email" name="mail" value="{{ old('mail') }}">
                     </label>
                     @error('mail')
-                        <div class="error">{{ $message }}</div>
+                        <div>
+                            <strong class="error">{{ $message }}</strong>
+                        </div>
                     @enderror
                 </div>
                 <div class="form-group">
@@ -33,7 +37,9 @@
                         <input type="password" name="password">
                     </label>
                     @error('password')
-                        <div class="error">{{ $message }}</div>
+                        <div>
+                            <strong class="error">{{ $message }}</strong>
+                        </div>
                     @enderror
                 </div>
                 <div class="form-group">
@@ -42,7 +48,9 @@
                         <input type="password" name="password_confirmation">
                     </label>
                     @error('password_confirmation')
-                        <div class="error">{{ $message }}</div>
+                        <div>
+                            <strong class="error">{{ $message }}</strong>
+                        </div>
                     @enderror
                 </div>
                 <div class="form-button">
