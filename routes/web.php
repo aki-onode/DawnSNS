@@ -29,7 +29,7 @@ Route::get('/added', [RegisterController::class, 'added'])->name('show.added');
 //ログイン中のページ
 Route::get('/top', [PostsController::class, 'index'])->name('user.home');
 
-Route::get('/profile', 'UsersController@profile');
+Route::get('/profile', 'UsersController@profile')->name('user.profile');
 
 Route::get('/search', 'UsersController@index');
 

@@ -28,7 +28,7 @@
             </div>
             <div id="menu-items">
                 <ul>
-                    <li class="menu-item"><a href="/top">ホーム</a></li>
+                    <li class="menu-item"><a href="{{ route('user.home') }}">ホーム</a></li>
                     <li class="menu-item"><a href="/profile">プロフィール</a></li>
                     <li class="menu-item"><a href="{{ route('user.logout') }}">ログアウト</a></li>
                 </ul>
