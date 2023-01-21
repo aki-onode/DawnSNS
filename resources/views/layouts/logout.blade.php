@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title></title>
+    <title>DAWN-SNS</title>
     <link rel="stylesheet" href="{{ url('css/reset.css') }}">
     <link rel="stylesheet" href="{{ url('css/logout.css') }}">
 </head>

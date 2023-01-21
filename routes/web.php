@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\UsersController;
+use App\Http\Controllers\FollowsController;
 
 
 /*
@@ -33,7 +34,7 @@ Route::get('/profile', 'UsersController@profile')->name('user.profile');
 
 Route::get('/search', 'UsersController@index');
 
-Route::get('/follow-list', 'PostsController@index');
-Route::get('/follower-list', 'PostsController@index');
+Route::get('/follow-list', [FollowsController::class, 'followList'])->name('follows.list');
+Route::get('/follower-list', [FollowsController::class, 'followerList'])->name('followers.list');
 
 Route::get('/logout', [UsersController::class, 'logout'])->name('user.logout');
