@@ -1,30 +1,39 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
 
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title></title>
-    <link rel="stylesheet" href="{{ url('css/reset.css') }}">
-    <link rel="stylesheet" href="{{ url('css/style.css') }}">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="{{ asset('css/reset.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 </head>
 
 <body>
     <header>
-        <div id="head">
-            <h1><a><img src="{{ url('images/main_logo.png') }}"></a></h1>
-            <div id="">
-                <div id="">
-                    <p>〇〇さん<img src="images/arrow.png"></p>
-                    <div>
-                        <ul>
-                            <li><a href="/top">ホーム</a></li>
-                            <li><a href="/profile">プロフィール</a></li>
-                            <li><a href="{{ route('user.logout') }}">ログアウト</a></li>
-                        </ul>
-                    </div>
+        <div id="header-wrapper">
+            <h1 class="header-logo">
+                <a href="{{ route('user.home') }}">
+                    <img class="header-img" src="{{ asset('images/main_logo.png') }}">
+                </a>
+            </h1>
+        </div>
+        <div id="nav-wrapper">
+            <div id="nav-items">
+                <div id="user-items">
+                    <p>{{ Auth::user()->username }} さん<span class="ac-open">&or;</span></p>
+                    <img src="images/{{ Auth::user()->image }}" width="35" height="35">
                 </div>
+            </div>
+            <div id="menu-items">
+                <ul>
+                    <li><a href="/top">ホーム</a></li>
+                    <li><a href="/profile">プロフィール</a></li>
+                    <li><a href="{{ route('user.logout') }}">ログアウト</a></li>
+                </ul>
+            </div>
+        </div>
     </header>
     <div id="row">
         <div id="container">
@@ -49,8 +58,8 @@
     </div>
     <footer>
     </footer>
-    <script src="JavaScriptファイルのURL"></script>
-    <script src="JavaScriptファイルのURL"></script>
+    <script src="{{ asset('js/jquery-3.6.3.min.js') }}"></script>
+    <script src="{{ asset('js/script.js') }}"></script>
 </body>
 
 </html>

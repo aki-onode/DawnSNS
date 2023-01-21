@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class RegisterController extends Controller
 {
@@ -70,8 +71,6 @@ class RegisterController extends Controller
                 'password_confirmation.required' => '確認用パスワードを入力してください',
             ]);
             $data = $request->all();
-
-            $request->session()->put($data);
             $this->create($data);
 
             return redirect()->route('show.added');
@@ -79,9 +78,9 @@ class RegisterController extends Controller
         return view('auth.register');
     }
 
-    public function added(Request $request)
+    public function added()
     {
-        $username = $request->session()->get('username');
+        $username = DB::table('users')->latest()->value('username');
         return view('auth.added')->with(['username' => $username]);
     }
 }
