@@ -12,12 +12,12 @@
 
 <body>
     <header>
-        <div id="header-wrapper">
-            <h1 class="header-logo">
+        <div id="logo-wrapper">
+            <div class="header-logo">
                 <a href="{{ route('user.home') }}">
                     <img class="header-img" src="{{ asset('images/main_logo.png') }}">
                 </a>
-            </h1>
+            </div>
         </div>
         <div id="nav-wrapper">
             <div id="nav-items">
@@ -28,9 +28,9 @@
             </div>
             <div id="menu-items">
                 <ul>
-                    <li><a href="/top">ホーム</a></li>
-                    <li><a href="/profile">プロフィール</a></li>
-                    <li><a href="{{ route('user.logout') }}">ログアウト</a></li>
+                    <li class="menu-item"><a href="/top">ホーム</a></li>
+                    <li class="menu-item"><a href="/profile">プロフィール</a></li>
+                    <li class="menu-item"><a href="{{ route('user.logout') }}">ログアウト</a></li>
                 </ul>
             </div>
         </div>

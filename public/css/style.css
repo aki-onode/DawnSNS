@@ -15,7 +15,8 @@ header{
     box-sizing: border-box;
 }
 
-#header-wrapper {
+#logo-wrapper,
+#nav-items {
     padding: 0 40px;
 }
 
@@ -28,9 +29,10 @@ header{
     width: 154px;
 }
 
+
 #user-items {
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
     color: #fff;
     padding: 20px 0;
@@ -45,16 +47,41 @@ header{
 }
 
 #menu-items {
-    /* display: none; */
+    display: none;
     text-align:center;
     background: #fff;
     width: 270px;
     font-size: 18px;
     border: 1px solid #6c6c6c;
     line-height: 83px;
+    position: relative;
+}
+
+#menu-items.active {
+}
+
+.menu-item > a {
+    display: block;
+    color: #6c6c6c;
+}
+
+.menu-item:nth-child(1),
+.menu-item:nth-child(2) {
+    border-bottom: 1px solid #6c6c6c;
+}
+
+.menu-item:hover {
+    display: block;
+    background: #de563c;
+}
+
+.menu-item > a:hover {
+    color: #fff;
+
 }
 
 .ac-open {
+    display: inline-block;
     padding: 0 10px;
 }
 
