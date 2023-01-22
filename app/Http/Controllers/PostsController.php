@@ -14,10 +14,17 @@ class PostsController extends Controller
     {
 
         $user = auth()->user();
+
+        $followerId = $follow->getFollowId($user->id);
+        $followingId = $followerId->pluck('follower_id')->toArray();
+
+        $timelines = $post->getTimelines($user->id, $followingId);
+
         $followCount = $follow->getFollowCount($user->id);
         $followerCount = $follow->getFollowerCount($user->id);
 
         return view('posts.index')->with([
+            'timelines' => $timelines,
             'followCount' => $followCount,
             'followerCount' => $followerCount,
         ]);

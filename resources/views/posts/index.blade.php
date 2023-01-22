@@ -17,4 +17,22 @@
             </div>
         </form>
     </div>
+    <div id="timelines-wrapper">
+        @foreach ($timelines as $timeline)
+            <div class=timeline-wrapper>
+                <div class="users-icon">
+                    <img src="/images/dawn.png" alt="">
+                </div>
+                <div class="timeline-items">
+                    <div class="timeline-info">
+                        <p>{{ $timeline->user->username }}</p>
+                        <p>{{ $timeline->created_at }}</p>
+                    </div>
+                </div>
+                <div class="timeline">
+                    <p>{!! nl2br(e($timeline->post)) !!}</p>
+                </div>
+            </div>
+        @endforeach
+    </div>
 @endsection
