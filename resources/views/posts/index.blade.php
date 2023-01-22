@@ -9,7 +9,7 @@
             </div>
             <div class="posts-create">
                 <label>
-                    <textarea name="posts" placeholder="何をつぶやこうか...？"></textarea>
+                    <textarea name="newPost" placeholder="何をつぶやこうか...？"></textarea>
                 </label>
                 <button type="submit" class="posts-button">
                     <img src="{{ asset('images/post.png') }}" alt="投稿">

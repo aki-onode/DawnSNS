@@ -22,4 +22,15 @@ class PostsController extends Controller
             'followerCount' => $followerCount,
         ]);
     }
+
+    public function edit(Request $request)
+    {
+        $post = $request->input('newPost');
+        Post::create([
+            'user_id' => Auth::id(),
+            'post' => $post,
+        ]);
+
+        return redirect()->route('user.home');
+    }
 }
