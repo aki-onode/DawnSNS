@@ -29,6 +29,7 @@ Route::get('/added', [RegisterController::class, 'added'])->name('show.added');
 
 //ログイン中のページ
 Route::get('/top', [PostsController::class, 'index'])->name('user.home');
+Route::post('/post', [PostsController::class, 'post'])->name('edit.posts');
 
 Route::get('/profile', 'UsersController@profile')->name('user.profile');
 

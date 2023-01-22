@@ -93,6 +93,50 @@ header{
     flex-basis: 80%;
 }
 
+/* posts create */
+
+#posts-create-wrapper {
+    border-bottom: 5px solid #d7d7d7;
+    box-sizing: border-box;
+}
+
+.form-wrapper {
+    display: flex;
+    padding: 21px 204px 12px 0;
+}
+
+.user-icon {
+    display: flex;
+    align-items: center;
+    padding: 0 19px 0 17px;
+}
+
+.user-icon > img {
+    border-radius: 50%;
+}
+
+.post-create {
+    display: flex;
+    justify-content: space-between;
+}
+
+textarea {
+    width: 50vw;
+    height: 5vw;
+    border: none;
+    outline: none;
+    resize: none;
+}
+
+textarea::placeholder {
+    color: #ebebeb;
+}
+
+.posts-button {
+    border: none;
+    width: fit-content;
+}
+
 /* side-bar */
 #side-bar{
     flex-basis: 20%;
