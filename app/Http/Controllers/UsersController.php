@@ -19,13 +19,13 @@ class UsersController extends Controller
     public function search(User $user, Follow $follow, Request $request)
     {
         $user = auth()->user();
-        $search1 = $request->input('username');
+        $search = $request->input('username');
 
         $followCount = $follow->getFollowCount($user->id);
         $followerCount = $follow->getFollowerCount($user->id);
 
-        if ($request->has('username') && $search1 != '') {
-            $users = User::where('username', 'like', "%{$search1}%")->where('id', '<>', $user->id)->get();
+        if ($request->has('username') && $search != '') {
+            $users = User::where('username', 'like', "%{$search}%")->where('id', '<>', $user->id)->get();
             $data = $users;
         } else {
             $users = $user->getAllUsers(auth()->user()->id);
@@ -38,8 +38,30 @@ class UsersController extends Controller
             'followCount' => $followCount,
             'followerCount' => $followerCount,
             'data' => $data,
-            'search1' => $search1,
+            'search' => $search,
         ]);
+    }
+
+    public function follow(User $user)
+    {
+        $follower = auth()->user();
+
+        $is_following = $follower->isFollowing($user->id);
+        if (!$is_following) {
+            $follower->follow($user->id);
+            return back();
+        }
+    }
+
+    public function unfollow(User $user)
+    {
+        $follower = auth()->user();
+
+        $is_following = $follower->isFollowing($user->id);
+        if ($is_following) {
+            $follower->unfollow($user->id);
+            return back();
+        }
     }
 
     public function logout()

@@ -352,12 +352,12 @@ label > .edit-post {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding-bottom: 20px;
 }
 
 .search-list-items {
     display: flex;
     align-items: center;
-    padding-bottom: 20px;
 }
 
 .search-username {
@@ -370,6 +370,7 @@ label > .edit-post {
     width: 138px;
     height: 44px;
     color: #fff;
+    cursor: pointer;
 }
 
 .btn-blue {

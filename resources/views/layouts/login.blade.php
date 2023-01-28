@@ -71,7 +71,7 @@
 
             <div id="serch-wrapper">
                 <button class="side-button">
-                    <a href="{{ route('show.users') }}">ユーザー検索</a>
+                    <a href="{{ route('search.users') }}">ユーザー検索</a>
                 </button>
             </div>
         </div>

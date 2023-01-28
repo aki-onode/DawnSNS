@@ -35,7 +35,12 @@ Route::delete('/post/{id}/delete', [PostsController::class, 'delete'])->name('de
 
 Route::get('/profile', 'UsersController@profile')->name('user.profile');
 
-Route::get('/search', [UsersController::class, 'search'])->name('show.users');
+Route::get('/search', [UsersController::class, 'search'])
+    ->name('search.users');
+Route::post('users/{user}/follow', [UsersController::class, 'follow'])
+    ->name('follow.user');
+Route::delete('users/{user}/unfollow', [UsersController::class, 'unfollow'])
+    ->name('unfollow.user');
 
 Route::get('/follow-list', [FollowsController::class, 'followList'])->name('follows.list');
 Route::get('/follower-list', [FollowsController::class, 'followerList'])->name('followers.list');

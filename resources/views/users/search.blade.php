@@ -3,10 +3,10 @@
 @section('content')
     <div class="search-wrapper">
         <div class="search-form-wrapper">
-            <form action="get" class="search-form-items">
+            <form method="get" action="{{ route('search.users') }}" class="search-form-items">
                 @csrf
                 <label>
-                    <input type="text" class="search-form" placeholder="ユーザー名">
+                    <input type="text" class="search-form" placeholder="ユーザー名" name="username" value="{{ old('username') }}">
                 </label>
                 <label>
                     <button type="submit" class="search-button fa fa-search fa-rotate-90"></button>
@@ -28,13 +28,13 @@
                         </div>
                         <div class="follow-button">
                             @if (auth()->user()->isFollowing($userItem->id))
-                                <form action="">
+                                <form method="post" action="{{ route('unfollow.user', $userItem->id) }}">
                                     @method('delete')
                                     @csrf
                                     <button type="submit" class="follow-button btn-red">フォローをはずす</button>
                                 </form>
                             @else
-                                <form action="" method="post">
+                                <form action="{{ route('follow.user', $userItem->id) }}" method="post">
                                     @csrf
                                     <button type="submit" class="follow-button btn-blue">フォローする</button>
                                 </form>
