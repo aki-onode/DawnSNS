@@ -55,7 +55,6 @@
                             <a href="{{ route('follows.list') }}">フォローリスト</a>
                         </button>
                     </div>
-
                 </div>
                 <div class="confirm-items">
                     <div class="follow-count">
@@ -67,12 +66,12 @@
                             <a href="{{ route('followers.list') }}">フォロワーリスト</a>
                         </button>
                     </div>
-
                 </div>
             </div>
+
             <div id="serch-wrapper">
                 <button class="side-button">
-                    <a href="">ユーザー検索</a>
+                    <a href="{{ route('show.users') }}">ユーザー検索</a>
                 </button>
             </div>
         </div>

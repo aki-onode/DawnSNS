@@ -35,7 +35,7 @@ Route::delete('/post/{id}/delete', [PostsController::class, 'delete'])->name('de
 
 Route::get('/profile', 'UsersController@profile')->name('user.profile');
 
-Route::get('/search', 'UsersController@index');
+Route::get('/search', [UsersController::class, 'search'])->name('show.users');
 
 Route::get('/follow-list', [FollowsController::class, 'followList'])->name('follows.list');
 Route::get('/follower-list', [FollowsController::class, 'followerList'])->name('followers.list');

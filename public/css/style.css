@@ -15,6 +15,10 @@ button {
     background: #3c4767;
 }
 
+.rounded-circle {
+    border-radius: 50%;
+}
+
 /* header */
 header{
     background:#3C4767;
@@ -228,11 +232,11 @@ textarea::placeholder {
 }
 
 .fa-times {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  color: rgba(128, 128, 128, 0.46);
-  cursor: pointer;
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    color: rgba(128, 128, 128, 0.46);
+    cursor: pointer;
 }
 
 .edit-timeline-info {
@@ -253,14 +257,14 @@ label > .edit-post {
 }
 
 #submit-button {
-  display: inline-block;
-  padding: 14px 140px;
-  background: #3c4767;
-  border: none;
-  border-radius: 5px;
-  color: white;
-  margin: 10px auto;
-  cursor: pointer;
+    display: inline-block;
+    padding: 14px 140px;
+    background: #3c4767;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    margin: 10px auto;
+    cursor: pointer;
 }
 
 /* side-bar */
@@ -312,4 +316,66 @@ label > .edit-post {
     justify-content: center;
     padding-top: 33px;
     height: 100vh;
+}
+
+/* search content */
+.search-form-wrapper {
+    display: flex;
+    padding: 28px 482px 24px 78px;
+    border-bottom: 5px solid #d7d7d7;
+}
+
+.search-form-items {
+    display: flex;
+    align-items: center;
+}
+
+.search-form {
+    width: 320px;
+    height: 36px;
+    border: 1px solid #707070;
+    border-radius: 5px;
+}
+
+.search-button {
+    color: #fff;
+    width: 36px;
+    height: 34px;
+    margin-left: 12px;
+}
+
+.search-result-wrapper {
+    padding: 28px 240px 14px 84px;
+}
+
+.search-list-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.search-list-items {
+    display: flex;
+    align-items: center;
+    padding-bottom: 20px;
+}
+
+.search-username {
+    color: #6c6c6c;
+    font-size: 18px;
+    padding-left: 14px;
+}
+
+.follow-button {
+    width: 138px;
+    height: 44px;
+    color: #fff;
+}
+
+.btn-blue {
+    background: #4b71cabf;
+}
+
+.btn-red {
+    background: #e2563b;
 }
