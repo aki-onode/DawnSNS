@@ -29,7 +29,9 @@ Route::get('/added', [RegisterController::class, 'added'])->name('show.added');
 
 //ログイン中のページ
 Route::get('/top', [PostsController::class, 'index'])->name('user.home');
-Route::post('/post', [PostsController::class, 'edit'])->name('edit.posts');
+Route::post('/post', [PostsController::class, 'create'])->name('create.posts');
+Route::patch('/post/edit', [PostsController::class, 'edit'])->name('edit.posts');
+Route::delete('/post/{id}/delete', [PostsController::class, 'delete'])->name('delete.posts');
 
 Route::get('/profile', 'UsersController@profile')->name('user.profile');
 

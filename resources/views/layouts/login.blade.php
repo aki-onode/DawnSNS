@@ -8,6 +8,7 @@
     <title>DAWN-SNS</title>
     <link rel="stylesheet" href="{{ asset('css/reset.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 </head>
 
 <body>
@@ -50,7 +51,7 @@
                         <p>{{ $followCount }}名</p>
                     </div>
                     <div class="button-wrapper">
-                        <button>
+                        <button class="side-button">
                             <a href="{{ route('follows.list') }}">フォローリスト</a>
                         </button>
                     </div>
@@ -62,7 +63,7 @@
                         <p>{{ $followerCount }}名</p>
                     </div>
                     <div class="button-wrapper">
-                        <button>
+                        <button class="side-button">
                             <a href="{{ route('followers.list') }}">フォロワーリスト</a>
                         </button>
                     </div>
@@ -70,7 +71,7 @@
                 </div>
             </div>
             <div id="serch-wrapper">
-                <button>
+                <button class="side-button">
                     <a href="">ユーザー検索</a>
                 </button>
             </div>

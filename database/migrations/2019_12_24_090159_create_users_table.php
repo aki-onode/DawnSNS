@@ -20,7 +20,7 @@ class CreateUsersTable extends Migration
             $table->string('mail')->unique();
             $table->string('password')->unique();
             $table->string('bio', 400)->nullable();
-            $table->string('image')->default('images/dawn.png')->nullable();
+            $table->string('image')->default('dawn.png')->nullable();
             $table->timestamps();
         });
     }
