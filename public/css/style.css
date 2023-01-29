@@ -380,3 +380,32 @@ label > .edit-post {
 .btn-red {
     background: #e2563b;
 }
+
+/* follower list  */
+.follow-lists,
+.follower-lists {
+    border-bottom: 5px solid #d7d7d7;
+}
+
+.follow-list-title,
+.follower-list-title {
+    padding: 20px 44px;
+}
+
+.follow-list-title > h2,
+.follower-list-title > h2 {
+    font-size: 28px;
+    color: #6c6c6c;
+}
+
+.follow-image-wrapper,
+.follower-image-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 6px 160px 20px 94px;
+}
+
+.follow-images,
+.follower-images {
+    padding-left: 20px;
+}

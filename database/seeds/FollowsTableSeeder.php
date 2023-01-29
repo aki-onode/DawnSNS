@@ -12,7 +12,7 @@ class FollowsTableSeeder extends Seeder
      */
     public function run()
     {
-        for ($i = 2; $i <= 5; $i++) {
+        for ($i = 2; $i <= 20; $i++) {
             Follow::create([
                 'follow_id' => $i,
                 'follower_id' => 1,

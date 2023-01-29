@@ -21,4 +21,9 @@ class Post extends Model
         $following_id[] = $user_id;
         return $this->whereIn('user_id', $following_id)->latest()->paginate(50);
     }
+
+    public function getFollowTimelines(array $follow_ids)
+    {
+        return $this->whereIn('user_id', $follow_ids)->latest()->paginate(50);;
+    }
 }
