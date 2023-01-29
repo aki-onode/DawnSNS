@@ -16,13 +16,9 @@ class UsersController extends Controller
         return view('users.profile');
     }
 
-    public function search(User $user, Follow $follow, Request $request)
+    public function search(User $user, Request $request)
     {
-        $user = auth()->user();
         $search = $request->input('username');
-
-        $followCount = $follow->getFollowCount($user->id);
-        $followerCount = $follow->getFollowerCount($user->id);
 
         if ($request->has('username') && $search != '') {
             $users = User::where('username', 'like', "%{$search}%")->where('id', '<>', $user->id)->get();
@@ -35,8 +31,6 @@ class UsersController extends Controller
         return view('users.search')->with([
             'user' => $user,
             'users' => $users,
-            'followCount' => $followCount,
-            'followerCount' => $followerCount,
             'data' => $data,
             'search' => $search,
         ]);
@@ -45,8 +39,8 @@ class UsersController extends Controller
     public function follow(User $user)
     {
         $follower = auth()->user();
-
         $is_following = $follower->isFollowing($user->id);
+
         if (!$is_following) {
             $follower->follow($user->id);
             return back();
@@ -56,12 +50,33 @@ class UsersController extends Controller
     public function unfollow(User $user)
     {
         $follower = auth()->user();
-
         $is_following = $follower->isFollowing($user->id);
+
         if ($is_following) {
             $follower->unfollow($user->id);
             return back();
         }
+    }
+
+    public function show($id)
+    {
+        $user = DB::table('users')->where('id', $id)->first();
+        $auth_id = Auth::id();
+
+        $follower = DB::table('follows')->where('follower_id', $auth_id)->pluck('follower_id')->toArray();
+        // $follower_user = [];
+
+        // foreach ($follower as $follower_id) {
+        //     $follower_user[] = $follower_id;
+        // }
+
+        $post = Post::where('user_id', $id)->get();
+
+        return view('users.show', [
+            'user' => $user,
+            'follower_user' => $follower,
+            'post' => $post,
+        ]);
     }
 
     public function logout()

@@ -11,23 +11,15 @@ use App\Models\Post;
 
 class PostsController extends Controller
 {
-    public function index(User $user, Post $post, Follow $follow)
+    public function index(Post $post, Follow $follow)
     {
-
-        $user = auth()->user();
-
-        $followerId = $follow->getFollowId($user->id);
+        $followerId = $follow->getFollowId(Auth::id());
         $followingId = $followerId->pluck('follower_id')->toArray();
 
-        $timelines = $post->getTimelines($user->id, $followingId);
-
-        $followCount = $follow->getFollowCount($user->id);
-        $followerCount = $follow->getFollowerCount($user->id);
+        $timelines = $post->getTimelines(Auth::id(), $followingId);
 
         return view('posts.index')->with([
             'timelines' => $timelines,
-            'followCount' => $followCount,
-            'followerCount' => $followerCount,
         ]);
     }
 

@@ -11,13 +11,9 @@ use App\Models\Post;
 
 class FollowsController extends Controller
 {
-    public function followList(User $user, Post $post, Follow $follow)
+    public function followList(Post $post)
     {
-        $user = auth()->user();
-        $followCount = $follow->getFollowCount($user->id);
-        $followerCount = $follow->getFollowerCount($user->id);
-
-        $followersId = Follow::where('follow_id', $user->id)->pluck('follower_id')->toArray();
+        $followersId = Follow::where('follow_id', Auth::id())->pluck('follower_id')->toArray();
         $followIdLists = User::find($followersId);
         $timelines = $post->getFollowTimelines($followersId);
 
@@ -25,17 +21,12 @@ class FollowsController extends Controller
             ->with([
                 'followIdLists' => $followIdLists,
                 'timelines' => $timelines,
-                'followCount' => $followCount,
-                'followerCount' => $followerCount,
             ]);
     }
-    public function followerList(User $user, Post $post, Follow $follow)
-    {
-        $user = auth()->user();
-        $followCount = $follow->getFollowCount($user->id);
-        $followerCount = $follow->getFollowerCount($user->id);
 
-        $followersId = Follow::where('follower_id', $user->id)->pluck('follow_id')->toArray();
+    public function followerList(Post $post)
+    {
+        $followersId = Follow::where('follower_id', Auth::id())->pluck('follow_id')->toArray();
         $followIdLists = User::find($followersId);
         $timelines = $post->getFollowTimelines($followersId);
 
@@ -43,8 +34,6 @@ class FollowsController extends Controller
             ->with([
                 'followIdLists' => $followIdLists,
                 'timelines' => $timelines,
-                'followCount' => $followCount,
-                'followerCount' => $followerCount,
             ]);
     }
 }
