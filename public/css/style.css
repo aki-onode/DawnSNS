@@ -381,7 +381,7 @@ label > .edit-post {
     background: #e2563b;
 }
 
-/* follower list  */
+/* follow & follower list  */
 .follow-lists,
 .follower-lists {
     border-bottom: 5px solid #d7d7d7;
@@ -408,4 +408,49 @@ label > .edit-post {
 .follow-images,
 .follower-images {
     padding-left: 20px;
+}
+
+/* other user profile */
+.oth-user {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    font-family: "Meiryo", sans-serif;
+    font-size: 18px;
+    color: #6c6c6c;
+    padding: 40px 28px 0px 84px;
+    border-bottom: 5px solid #d7d7d7;
+}
+
+.oth-user-items {
+    display: flex;
+}
+
+.oth-user-image {
+    padding-right: 30px;
+}
+
+.oth-user-profile {
+    display: flex;
+}
+
+.oth-column,
+.oth-field {
+    display: flex;
+    flex-direction: column;
+}
+
+.oth-column {
+    padding-right: 70px;
+    padding-bottom: 28px;
+}
+
+.oth-column > p,
+.oth-field > p {
+    margin-bottom: 20px;
+}
+
+.oth-button {
+    padding-bottom: 20px;
 }

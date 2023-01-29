@@ -2,9 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 use App\Models\User;
 use App\Models\Follow;
 use App\Models\Post;
@@ -13,9 +11,9 @@ class FollowsController extends Controller
 {
     public function followList(Post $post)
     {
-        $followersId = Follow::where('follow_id', Auth::id())->pluck('follower_id')->toArray();
-        $followIdLists = User::find($followersId);
-        $timelines = $post->getFollowTimelines($followersId);
+        $followsId = Follow::where('follow_id', Auth::id())->pluck('follower_id')->toArray();
+        $followIdLists = User::find($followsId);
+        $timelines = $post->getFollowTimelines($followsId);
 
         return view('follows.followList')
             ->with([

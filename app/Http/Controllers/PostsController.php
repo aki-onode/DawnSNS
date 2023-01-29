@@ -36,7 +36,7 @@ class PostsController extends Controller
 
     public function delete($id)
     {
-        DB::table('posts')->where('id', $id)->delete();
+        Post::where('id', $id)->delete();
 
         return redirect()->route('user.home');
     }
@@ -45,7 +45,7 @@ class PostsController extends Controller
     {
         $id = $request->input('id');
         $editPost = $request->input('editPost');
-        DB::table('posts')->where('id', $id)->update(['post' => $editPost]);
+        Post::where('id', $id)->update(['post' => $editPost]);
 
         return redirect()->route('user.home');
     }

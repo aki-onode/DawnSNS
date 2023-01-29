@@ -24,7 +24,7 @@
             <div id="nav-items">
                 <div id="user-items">
                     <p>{{ Auth::user()->username }} さん<span class="ac-open">&or;</span></p>
-                    <img src="images/{{ Auth::user()->image }}" width="35" height="35">
+                    <img src="{{ asset('images/' . Auth::user()->image) }}" width="35" height="35">
                 </div>
             </div>
             <div id="menu-items">
@@ -41,7 +41,6 @@
         <div id="container">
             @yield('content')
         </div>
-
         <div id="side-bar">
             <div id="confirm-wrapper">
                 <div class="confirm-items">
@@ -68,7 +67,6 @@
                     </div>
                 </div>
             </div>
-
             <div id="serch-wrapper">
                 <button class="side-button">
                     <a href="{{ route('search.users') }}">ユーザー検索</a>

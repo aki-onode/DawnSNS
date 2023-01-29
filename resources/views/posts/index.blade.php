@@ -5,7 +5,7 @@
         <form method="POST" action="{{ route('create.posts') }}" class="form-wrapper">
             @csrf
             <div class="user-icon">
-                <img src="images/{{ Auth::user()->image }}" width="45" height="45">
+                <img src="{{ asset('images/' . Auth::user()->image) }}" width="45" height="45">
             </div>
             <div class="posts-create">
                 <label>

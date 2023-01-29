@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 use App\Models\User;
 use App\Models\Follow;
 use App\Models\Post;
@@ -24,7 +23,7 @@ class UsersController extends Controller
             $users = User::where('username', 'like', "%{$search}%")->where('id', '<>', $user->id)->get();
             $data = $users;
         } else {
-            $users = $user->getAllUsers(auth()->user()->id);
+            $users = $user->getAllUsers(Auth::id());
             $data = $users;
         }
 
@@ -60,23 +59,14 @@ class UsersController extends Controller
 
     public function show($id)
     {
-        $user = DB::table('users')->where('id', $id)->first();
-        $auth_id = Auth::id();
+        $user = User::where('id', $id)->first();
+        $timelines = Post::where('user_id', $id)->get();
 
-        $follower = DB::table('follows')->where('follower_id', $auth_id)->pluck('follower_id')->toArray();
-        // $follower_user = [];
-
-        // foreach ($follower as $follower_id) {
-        //     $follower_user[] = $follower_id;
-        // }
-
-        $post = Post::where('user_id', $id)->get();
-
-        return view('users.show', [
-            'user' => $user,
-            'follower_user' => $follower,
-            'post' => $post,
-        ]);
+        return view('users.show')
+            ->with([
+                'user' => $user,
+                'timelines' => $timelines,
+            ]);
     }
 
     public function logout()

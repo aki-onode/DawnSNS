@@ -19,27 +19,18 @@
                     <div class="search-list-wrapper">
                         <div class="search-list-items">
                             <div class="search-list-image">
-                                <img src="images/{{ $userItem->image }}" class="rounded-circle" width="50"
-                                    height="50">
+                                <a href="{{ asset('profile/' . $userItem->id) }}">
+                                    <img src="images/{{ $userItem->image }}" class="rounded-circle" width="50"
+                                        height="50">
+                                </a>
                             </div>
                             <div class="search-list-name">
                                 <p class="search-username">{{ $userItem->username }}</p>
                             </div>
                         </div>
-                        <div class="follow-button">
-                            @if (auth()->user()->isFollowing($userItem->id))
-                                <form method="post" action="{{ route('unfollow.user', $userItem->id) }}">
-                                    @method('delete')
-                                    @csrf
-                                    <button type="submit" class="follow-button btn-red">フォローをはずす</button>
-                                </form>
-                            @else
-                                <form action="{{ route('follow.user', $userItem->id) }}" method="post">
-                                    @csrf
-                                    <button type="submit" class="follow-button btn-blue">フォローする</button>
-                                </form>
-                            @endif
-                        </div>
+                        @component('components.follow_button')
+                            @slot('id', $userItem->id)
+                        @endcomponent
                     </div>
                 @endforeach
             @endif
