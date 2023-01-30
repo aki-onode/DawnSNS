@@ -321,7 +321,8 @@ label > .edit-post {
 /* search content */
 .search-form-wrapper {
     display: flex;
-    padding: 28px 482px 24px 78px;
+    justify-content: space-between;
+    padding: 28px 234px 24px 78px;
     border-bottom: 5px solid #d7d7d7;
 }
 
@@ -342,6 +343,16 @@ label > .edit-post {
     width: 36px;
     height: 34px;
     margin-left: 12px;
+}
+
+.search-word-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.search-word-wrapper > p {
+    font-size: 18px;
+    color: #6c6c6c;
 }
 
 .search-result-wrapper {

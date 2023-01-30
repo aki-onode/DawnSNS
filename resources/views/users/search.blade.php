@@ -6,12 +6,17 @@
             <form method="get" action="{{ route('search.users') }}" class="search-form-items">
                 @csrf
                 <label>
-                    <input type="text" class="search-form" placeholder="ユーザー名" name="username" value="{{ old('username') }}">
+                    <input type="text" class="search-form" placeholder="ユーザー名" name="username">
                 </label>
                 <label>
                     <button type="submit" class="search-button fa fa-search fa-rotate-90"></button>
                 </label>
             </form>
+            <div class="search-word-wrapper">
+                @if (isset($search))
+                    <p>検索ワード：{{ $search }}</p>
+                @endif
+            </div>
         </div>
         <div class="search-result-wrapper">
             @if (!empty($data))
