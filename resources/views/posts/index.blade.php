@@ -9,7 +9,7 @@
             </div>
             <div class="posts-create">
                 <label>
-                    <textarea name="newPost" placeholder="何をつぶやこうか...？"></textarea>
+                    <textarea name="newPost" placeholder="何をつぶやこうか...？" required></textarea>
                 </label>
                 <button type="submit" class="posts-button">
                     <img src="{{ asset('images/post.png') }}" alt="投稿" width="30" height="28">
@@ -52,7 +52,7 @@
                         <div class="edit-modal-wrapper" id="edit-post-{{ $timeline->id }}">
                             <div class="modal">
                                 <div class="close-modal">
-                                    <i class="fa fa-2x fa-times" id="close-modal"></i>
+                                    <i class="fa fa-2x fa-times close-modal"></i>
                                 </div>
                                 <div id="edit-modal">
                                     <div class="users-icon">

@@ -1,5 +1,5 @@
-$(() => {
-    $('#nav-wrapper').click(() => {
+$(function () {
+    $('#nav-wrapper').click(function () {
         if ($('#menu-items').hasClass('open')) {
             $('#menu-items').slideUp();
             $('#menu-items').removeClass('open')
@@ -12,9 +12,9 @@ $(() => {
     });
 });
 
-$(() => {
-    $('.edit-button').each(() => {
-        $(this).click(() => {
+$(function () {
+    $('.edit-button').each(function () {
+        $(this).click(function () {
             let target = $(this).data('target');
             let modal = document.getElementById(target);
             $(modal).fadeIn();
@@ -22,16 +22,14 @@ $(() => {
         });
     });
 
-    $('#close-modal').each(() => {
-        $(this).click(() => {
-            $('.edit-modal-wrapper').fadeOut();
-            return false;
-        });
+    $('.close-modal').click(function () {
+        $('.edit-modal-wrapper').fadeOut();
+        return false;
     });
 });
 
-$(() => {
-    $('input').on('change', () => {
+$(function () {
+    $('input').on('change', function () {
         var file = $(this).prop('files')[0];
         $('.select-file').text(file.name);
     });
