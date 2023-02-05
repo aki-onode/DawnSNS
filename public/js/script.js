@@ -1,21 +1,38 @@
-$(function () {
-    $("#nav-wrapper").click(function () {
-        if ($("#menu-items").hasClass('open')) {
-            $("#menu-items").slideUp();
+$(() => {
+    $('#nav-wrapper').click(() => {
+        if ($('#menu-items').hasClass('open')) {
+            $('#menu-items').slideUp();
             $('#menu-items').removeClass('open')
             $('.ac-open').css('transform', 'rotate(0deg');
         } else {
-            $("#menu-items").slideDown();
+            $('#menu-items').slideDown();
             $('#menu-items').addClass('open');
             $('.ac-open').css('transform', 'rotate(180deg');
         }
     });
+});
 
-    $('.edit-button').click(function () {
-        $('.edit-modal-wrapper').fadeIn();
+$(() => {
+    $('.edit-button').each(() => {
+        $(this).click(() => {
+            let target = $(this).data('target');
+            let modal = document.getElementById(target);
+            $(modal).fadeIn();
+            return false;
+        });
     });
 
-    $('#close-modal').click(function () {
-        $('.edit-modal-wrapper').fadeOut();
+    $('#close-modal').each(() => {
+        $(this).click(() => {
+            $('.edit-modal-wrapper').fadeOut();
+            return false;
+        });
+    });
+});
+
+$(() => {
+    $('input').on('change', () => {
+        var file = $(this).prop('files')[0];
+        $('.select-file').text(file.name);
     });
 });

@@ -6,7 +6,7 @@ use App\Models\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+
 
 class RegisterController extends Controller
 {
@@ -80,7 +80,7 @@ class RegisterController extends Controller
 
     public function added()
     {
-        $username = DB::table('users')->latest()->value('username');
+        $username = User::latest()->value('username');
         return view('auth.added')->with(['username' => $username]);
     }
 }

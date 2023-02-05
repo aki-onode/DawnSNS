@@ -30,7 +30,7 @@
             <div id="menu-items">
                 <ul>
                     <li class="menu-item"><a href="{{ route('user.home') }}">HOME</a></li>
-                    <li class="menu-item"><a href="/profile">プロフィール編集</a></li>
+                    <li class="menu-item"><a href="{{ route('user.profile') }}">プロフィール編集</a></li>
                     <li class="menu-item"><a href="{{ route('user.logout') }}">ログアウト</a></li>
                 </ul>
             </div>

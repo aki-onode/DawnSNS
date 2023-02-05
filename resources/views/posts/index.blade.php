@@ -34,11 +34,10 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="timeline-button-wrapper">
-                    @if (Auth::user()->id === $timeline->user_id)
+                    @if (Auth::id() === $timeline->user_id)
                         <div class="button-items">
-                            <button class="edit-button">
+                            <button class="edit-button" data-target="edit-post-{{ $timeline->id }}">
                                 <img id="open-modal" src="{{ asset('images/edit.png') }}">
                             </button>
                         </div>
@@ -50,7 +49,7 @@
                             </form>
                         </div>
 
-                        <div class="edit-modal-wrapper">
+                        <div class="edit-modal-wrapper" id="edit-post-{{ $timeline->id }}">
                             <div class="modal">
                                 <div class="close-modal">
                                     <i class="fa fa-2x fa-times" id="close-modal"></i>
@@ -71,7 +70,7 @@
                                             <input type="hidden" name="id" value="{{ $timeline->id }}">
                                         </label>
                                         <label>
-                                            <textarea name="editPost" class="edit-post"></textarea>
+                                            <textarea name="editPost" class="edit-post">{{ $timeline->post }}</textarea>
                                         </label>
                                         <label>
                                             <input id="submit-button" type="submit" value="編集">
