@@ -57,39 +57,33 @@ class UsersController extends Controller
         $search = $request->input('username');
 
         if ($request->has('username') && $search != '') {
-            $users = User::where('username', 'like', "%{$search}%")->where('id', '<>', $user->id)->get();
-            $data = $users;
+            $users = $user->where('username', 'like', "%{$search}%")->where('id', '<>', Auth::id())->get();
         } else {
             $users = $user->getAllUsers(Auth::id());
-            $data = $users;
         }
 
         return view('users.search')->with([
-            'user' => $user,
             'users' => $users,
-            'data' => $data,
             'search' => $search,
         ]);
     }
 
     public function follow(User $user)
     {
-        $follower = Auth::user();
-        $is_following = $follower->isFollowing($user->id);
+        $isFollowing = Auth::user()->isFollowing($user->id);
 
-        if (!$is_following) {
-            $follower->follow($user->id);
+        if (!$isFollowing) {
+            Auth::user()->follows()->attach($user->id);
             return back();
         }
     }
 
     public function unfollow(User $user)
     {
-        $follower = Auth::user();
-        $is_following = $follower->isFollowing($user->id);
+        $isFollowing = Auth::user()->isFollowing($user->id);
 
-        if ($is_following) {
-            $follower->unfollow($user->id);
+        if ($isFollowing) {
+            Auth::user()->follows()->detach($user->id);
             return back();
         }
     }

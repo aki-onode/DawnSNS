@@ -2,7 +2,7 @@
 
 @section('content')
     <div id="posts-create-wrapper">
-        <form method="POST" action="{{ route('create.posts') }}" class="form-wrapper">
+        <form method="post" action="{{ route('create.posts') }}" class="form-wrapper">
             @csrf
             <div class="user-icon">
                 <img src="{{ asset('images/' . Auth::user()->image) }}" width="45" height="45">

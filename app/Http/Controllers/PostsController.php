@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
-use App\Models\User;
 use App\Models\Follow;
 use App\Models\Post;
 
@@ -13,9 +11,8 @@ class PostsController extends Controller
 {
     public function index(Post $post, Follow $follow)
     {
-        $followerId = $follow->getFollowId(Auth::id());
-        $followingId = $followerId->pluck('follower_id')->toArray();
-
+        $followId = $follow->getFollowId(Auth::id());
+        $followingId = $followId->pluck('follower_id')->toArray();
         $timelines = $post->getTimelines(Auth::id(), $followingId);
 
         return view('posts.index')->with([

@@ -19,22 +19,22 @@
             </div>
         </div>
         <div class="search-result-wrapper">
-            @if (!empty($data))
-                @foreach ($data as $userItem)
+            @if (!empty($users))
+                @foreach ($users as $user)
                     <div class="search-list-wrapper">
                         <div class="search-list-items">
                             <div class="search-list-image">
-                                <a href="{{ asset('profile/' . $userItem->id) }}">
-                                    <img src="images/{{ $userItem->image }}" class="rounded-circle" width="50"
+                                <a href="{{ asset('profile/' . $user->id) }}">
+                                    <img src="images/{{ $user->image }}" class="rounded-circle" width="50"
                                         height="50">
                                 </a>
                             </div>
                             <div class="search-list-name">
-                                <p class="search-username">{{ $userItem->username }}</p>
+                                <p class="search-username">{{ $user->username }}</p>
                             </div>
                         </div>
                         @component('components.follow_button')
-                            @slot('id', $userItem->id)
+                            @slot('id', $user->id)
                         @endcomponent
                     </div>
                 @endforeach

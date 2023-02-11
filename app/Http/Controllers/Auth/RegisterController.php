@@ -7,7 +7,6 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
 
-
 class RegisterController extends Controller
 {
     /*
@@ -20,9 +19,7 @@ class RegisterController extends Controller
     | provide this functionality without requiring any additional code.
     |
     */
-
     use RegistersUsers;
-
     /**
      * Where to redirect users after registration.
      *
@@ -43,15 +40,15 @@ class RegisterController extends Controller
     /**
      * Create a new user instance after a valid registration.
      *
-     * @param  array  $data
+     * @param  array  $newUser
      * @return \App\Models\User
      */
-    protected function create(array $data)
+    protected function create(array $newUser)
     {
         return User::create([
-            'username' => $data['username'],
-            'mail' => $data['mail'],
-            'password' => bcrypt($data['password']),
+            'username' => $newUser['username'],
+            'mail' => $newUser['mail'],
+            'password' => bcrypt($newUser['password']),
         ]);
     }
 
@@ -64,14 +61,10 @@ class RegisterController extends Controller
                 'mail' => 'required|string|email|min:4|unique:users',
                 'password' => 'required|alpha_num|between:4,12|confirmed',
                 'password_confirmation' => 'required',
-            ], [
-                'username.required' => 'ユーザー名を入力してください',
-                'mail.required' => 'メールアドレスを入力してください',
-                'password.required' => 'パスワードを入力してください',
-                'password_confirmation.required' => '確認用パスワードを入力してください',
             ]);
-            $data = $request->all();
-            $this->create($data);
+
+            $newUser = $request->input();
+            $this->create($newUser);
 
             return redirect()->route('show.added');
         }
@@ -81,6 +74,9 @@ class RegisterController extends Controller
     public function added()
     {
         $username = User::latest()->value('username');
-        return view('auth.added')->with(['username' => $username]);
+
+        return view('auth.added')->with([
+            'username' => $username,
+        ]);
     }
 }

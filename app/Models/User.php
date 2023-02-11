@@ -37,11 +37,6 @@ class User extends Authenticatable
         return $this->hasMany(Post::class);
     }
 
-    public function getAllUsers(Int $user_id)
-    {
-        return $this->where('id', '<>', $user_id)->paginate(10);
-    }
-
     public function followers()
     {
         return $this->belongsToMany(self::class, 'follows', 'follower_id', 'follow_id');
@@ -52,23 +47,18 @@ class User extends Authenticatable
         return $this->belongsToMany(self::class, 'follows', 'follow_id', 'follower_id');
     }
 
-    public function follow(Int $user_id)
+    public function getAllUsers(Int $userId)
     {
-        return $this->follows()->attach($user_id);
+        return $this->where('id', '<>', $userId)->paginate(10);
     }
 
-    public function unfollow(Int $user_id)
+    public function isFollowing(Int $userId)
     {
-        return $this->follows()->detach($user_id);
+        return (bool) $this->follows()->where('follower_id', $userId)->exists();
     }
 
-    public function isFollowing(Int $user_id)
+    public function isFollowed(Int $userId)
     {
-        return (bool) $this->follows()->where('follower_id', $user_id)->exists();
-    }
-
-    public function isFollowed(Int $user_id)
-    {
-        return (bool) $this->followers()->where('follow_id', $user_id)->exists();
+        return (bool) $this->followers()->where('follow_id', $userId)->exists();
     }
 }

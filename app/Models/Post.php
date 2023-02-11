@@ -16,14 +16,14 @@ class Post extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function getTimelines(Int $user_id, array $following_id)
+    public function getTimelines(Int $userId, array $followingId)
     {
-        $following_id[] = $user_id;
-        return $this->whereIn('user_id', $following_id)->latest()->paginate(50);
+        $followingId[] = $userId;
+        return $this->whereIn('user_id', $followingId)->latest()->paginate(50);
     }
 
-    public function getFollowTimelines(array $follow_ids)
+    public function getFollowTimelines(array $followId)
     {
-        return $this->whereIn('user_id', $follow_ids)->latest()->paginate(50);;
+        return $this->whereIn('user_id', $followId)->latest()->paginate(50);
     }
 }
