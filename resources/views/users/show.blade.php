@@ -2,9 +2,6 @@
 
 @section('content')
     <div class="oth-user-wrapper">
-        <div>
-
-        </div>
         <div class="oth-user">
             <div class="oth-user-items">
                 <div class="oth-user-image">

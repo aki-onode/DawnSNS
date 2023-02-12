@@ -7,7 +7,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Intervention\Image\Facades\Image;
 use App\Models\User;
-use App\Models\Follow;
 use App\Models\Post;
 
 use App\Http\Requests\ProfileRequest;

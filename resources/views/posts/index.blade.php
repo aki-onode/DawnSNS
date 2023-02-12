@@ -62,8 +62,7 @@
                                         <p>{{ $timeline->user->username }}</p>
                                         <p>{{ $timeline->created_at }}</p>
                                     </div>
-                                    <form method="post" action="{{ route('edit.posts', $timeline->id) }}"
-                                        class="edit-form-items">
+                                    <form method="post" action="{{ route('edit.posts') }}" class="edit-form-items">
                                         @method('patch')
                                         @csrf
                                         <label>

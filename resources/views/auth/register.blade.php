@@ -8,7 +8,6 @@
         <div class="form-wrapper">
             <form method="post" action="{{ route('users.register') }}" id="form-wrapper">
                 @csrf
-
                 <div class="form-group">
                     <label>
                         <p>UserName</p>
@@ -56,7 +55,6 @@
                 <div class="form-button">
                     <input type="submit" value="REGISTER" class="create-button">
                 </div>
-
             </form>
         </div>
         <div class="back-login">
