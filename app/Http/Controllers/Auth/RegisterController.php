@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Models\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Http\Request;
 
 class RegisterController extends Controller
@@ -64,6 +65,7 @@ class RegisterController extends Controller
             ]);
 
             $newUser = $request->input();
+            Session::put('username', $newUser['username']);
             $this->create($newUser);
 
             return redirect()->route('show.added');
@@ -73,7 +75,7 @@ class RegisterController extends Controller
 
     public function added()
     {
-        $username = User::latest()->value('username');
+        $username = Session::get('username');
 
         return view('auth.added', compact('username'));
     }
