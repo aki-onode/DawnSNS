@@ -15,9 +15,7 @@ class PostsController extends Controller
         $followingId = $followId->pluck('follower_id')->toArray();
         $timelines = $post->getTimelines(Auth::id(), $followingId);
 
-        return view('posts.index')->with([
-            'timelines' => $timelines,
-        ]);
+        return view('posts.index', compact('timelines'));
     }
 
     public function create(Request $request)

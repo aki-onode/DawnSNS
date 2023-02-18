@@ -7,7 +7,7 @@
                 <h2>Follower list</h2>
             </div>
             <div class="follower-image-wrapper">
-                @foreach ($followIdLists as $followerIdList)
+                @foreach ($followerIdLists as $followerIdList)
                     <div class="follower-images">
                         <a href="profile/{{ $followerIdList->id }}">
                             <img src="images/{{ $followerIdList->image }}" class="rounded-circle">

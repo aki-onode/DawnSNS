@@ -15,23 +15,15 @@ class FollowsController extends Controller
         $followIdLists = User::find($followsId);
         $timelines = $post->getFollowTimelines($followsId);
 
-        return view('follows.followList')
-            ->with([
-                'followIdLists' => $followIdLists,
-                'timelines' => $timelines,
-            ]);
+        return view('follows.followList', compact('followIdLists', 'timelines'));
     }
 
     public function followerList(Post $post)
     {
         $followersId = Follow::where('follower_id', Auth::id())->pluck('follow_id')->toArray();
-        $followIdLists = User::find($followersId);
+        $followerIdLists = User::find($followersId);
         $timelines = $post->getFollowTimelines($followersId);
 
-        return view('follows.followerList')
-            ->with([
-                'followIdLists' => $followIdLists,
-                'timelines' => $timelines,
-            ]);
+        return view('follows.followerList', compact('followerIdLists', 'timelines'));
     }
 }

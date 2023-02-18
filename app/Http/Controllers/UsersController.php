@@ -17,10 +17,7 @@ class UsersController extends Controller
     {
         $user = Auth::user();
 
-        return view('users.profile')
-            ->with([
-                'user' => $user,
-            ]);
+        return view('users.profile', compact('user'));
     }
 
     public function edit(ProfileRequest $request)
@@ -61,10 +58,7 @@ class UsersController extends Controller
             $users = $user->getAllUsers(Auth::id());
         }
 
-        return view('users.search')->with([
-            'users' => $users,
-            'search' => $search,
-        ]);
+        return view('users.search', compact('users', 'search'));
     }
 
     public function follow(User $user)
@@ -90,13 +84,9 @@ class UsersController extends Controller
     public function show($id)
     {
         $user = User::where('id', $id)->first();
-        $timelines = Post::where('user_id', $id)->get();
+        $timelines = Post::where('user_id', $id)->latest()->get();
 
-        return view('users.show')
-            ->with([
-                'user' => $user,
-                'timelines' => $timelines,
-            ]);
+        return view('users.show', compact('user', 'timelines'));
     }
 
     public function logout()

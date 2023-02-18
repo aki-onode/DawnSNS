@@ -75,8 +75,6 @@ class RegisterController extends Controller
     {
         $username = User::latest()->value('username');
 
-        return view('auth.added')->with([
-            'username' => $username,
-        ]);
+        return view('auth.added', compact('username'));
     }
 }
